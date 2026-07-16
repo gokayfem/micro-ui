@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f7f6" />
+    <link rel="icon" type="image/webp" href="./Codex-micro-overview-white.webp" />
+    <meta
+      name="description"
+      content="An exact interactive Three.js reconstruction of the OpenAI × Work Louder Codex Micro."
+    />
+    <title>Codex Micro — Interactive 3D Reconstruction</title>
+  </head>
+  <body>
+    <main id="app" aria-label="Interactive 3D Codex Micro reconstruction">
+      <canvas id="scene"></canvas>
+
+      <header class="identity" aria-label="Model title">
+        <span class="kicker">OPENAI × WORK LOUDER</span>
+        <h1>Codex Micro</h1>
+        <span class="material-note">CNC polycarbonate · anodized aluminium · PBT</span>
+      </header>
+
+      <nav class="view-controls" aria-label="Reference camera views">
+        <button class="view-button is-active" data-view="hero">Hero</button>
+        <button class="view-button" data-view="top">Top</button>
+        <button class="view-button" data-view="low">Low</button>
+        <button class="view-button" data-view="underside">Underside</button>
+        <button class="view-button" data-view="exploded">Exploded</button>
+      </nav>
+
+      <div class="utility-controls" data-ui>
+        <button class="quality-control" type="button" aria-label="Rendering quality: Balanced">
+          <span class="quality-mark"></span>
+          <span>Quality</span>
+          <strong class="quality-value">Balanced</strong>
+        </button>
+
+        <button class="glow-control is-active" type="button" aria-pressed="true">
+          <span class="glow-dot"></span>
+          RGB glow
+        </button>
+      </div>
+
+      <section class="assembly-controls" aria-label="Assembly controls" data-ui>
+        <div class="control-heading">
+          <span>Assembly</span>
+          <output id="assembly-state" for="assembly-progress">Assembled</output>
+        </div>
+        <input
+          id="assembly-progress"
+          type="range"
+          min="0"
+          max="100"
+          step="1"
+          value="0"
+          aria-label="Disassembly progress"
+          aria-valuetext="Assembled"
+        />
+        <div class="assembly-actions">
+          <button type="button" data-assembly="0">Assemble</button>
+          <button type="button" data-assembly="1">Explode</button>
+        </div>
+      </section>
+
+      <details class="input-panel" data-ui>
+        <summary>Inputs</summary>
+        <div id="semantic-inputs" class="semantic-inputs" aria-label="Codex Micro inputs"></div>
+      </details>
+
+      <div class="interaction-readout" role="status" aria-live="polite" data-ui>
+        <span class="readout-kicker">Input</span>
+        <strong class="readout-value">Hover or click a control</strong>
+        <span class="renderer-state">Renderer sleeping · 0 FPS</span>
+      </div>
+
+      <div class="control-tooltip" role="tooltip" data-ui></div>
+
+      <div class="inspect-hint" aria-hidden="true">
+        <span class="mouse-mark"></span>
+        Drag to inspect · Click controls · Scroll to magnify
+      </div>
+
+      <div class="loading" role="status" aria-live="polite">
+        <div class="loading-orbit"><span></span></div>
+        <span>Machining the light guide</span>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
